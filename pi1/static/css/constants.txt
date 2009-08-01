@@ -1,0 +1,26 @@
+// --- CONSTANTS start -----------------------
+lib.treemenu {
+  imgFolder = typo3conf/ext/pmkcat2menu/res/xp/
+  splitImg = join.gif
+  vertlineImg = line.gif
+  cornerImg = joinbottom.gif
+  collapseImg = plus.gif
+  collapse_cornerImg = plusbottom.gif
+  collapse_corner_firstImg = plusonly.gif
+  collapse_firstImg = plustop.gif
+  expandImg = minus.gif
+  expand_cornerImg = minusbottom.gif
+  expand_corner_firstImg = minusonly.gif
+  expand_firstImg = minustop.gif
+  spaceImg = blank.gif
+  folder_openImg = folderopen.gif
+  folder_closedImg = folderclosed.gif
+  rootfolder_openImg = folderopen2.gif
+  rootfolder_closedImg = folderclosed2.gif
+  itemImg =  menu_link_no.gif
+  itemImgActive = menu_link_cur.gif
+  menuRoot = folderopen.gif
+  
+  rootTitle = News categories
+}
+// --- CONSTANTS end -------------------------

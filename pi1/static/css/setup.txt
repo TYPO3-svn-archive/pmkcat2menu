@@ -1,0 +1,224 @@
+// --- SETUP start ---------------------------
+
+  temp.level1 = TMENU
+  temp.level1 {
+  	#alternativeSortingField = title
+    expAll = 0
+    NO {
+      before.cObject = COA
+      before.cObject {
+        10 = IMAGE
+        10.file = {$lib.treemenu.imgFolder}{$lib.treemenu.splitImg} |*||*| {$lib.treemenu.imgFolder}{$lib.treemenu.cornerImg}
+        10.params = align="top"
+
+        20 = IMAGE
+        20.file = {$lib.treemenu.imgFolder}{$lib.treemenu.itemImg}
+        20.altText = »»
+        20.titleText = »»
+        20.params = align="top"
+      }
+      ATagParams = class="no"
+      allWrap = <li>|</li>
+    }
+    CUR < .NO
+    CUR = 1
+    CUR.before.cObject.20.file = {$lib.treemenu.imgFolder}{$lib.treemenu.itemImgActive}
+    CUR.ATagParams = class="act"
+    CUR.allWrap = <li><div class="cur">|</div></li>
+    IFSUB < .NO
+    IFSUB = 1
+    IFSUB {
+      before.cObject = COA
+      before.cObject {
+        10.file = {$lib.treemenu.imgFolder}{$lib.treemenu.collapseImg} |*||*| {$lib.treemenu.imgFolder}{$lib.treemenu.collapse_cornerImg}
+        10.altText = -
+        10.titleText = -
+        10.params = align="top" |*||*| align="top"
+
+        20.file = {$lib.treemenu.imgFolder}{$lib.treemenu.folder_closedImg}
+        20.altText = Click to open
+        20.titleText = Click to open
+        20.params = align="top"
+
+        40 = LOAD_REGISTER
+        40.level2tree = {$lib.treemenu.vertlineImg} |*||*| {$lib.treemenu.spaceImg}
+      }
+      allWrap = <li>|<ul>
+      wrapItemAndSub = |</ul></li>
+    }
+    ACTIFSUB < .IFSUB
+    ACTIFSUB = 1
+    ACTIFSUB.before.cObject.10.file = {$lib.treemenu.imgFolder}{$lib.treemenu.expandImg} |*||*| {$lib.treemenu.imgFolder}{$lib.treemenu.expand_cornerImg}
+    ACTIFSUB.before.cObject.10.altText = +
+    ACTIFSUB.before.cObject.10.titleText = +
+    ACTIFSUB.before.cObject.10.params = align="top" |*||*| align="top"
+    ACTIFSUB.before.cObject.20.file = {$lib.treemenu.imgFolder}{$lib.treemenu.folder_openImg}
+    ACTIFSUB.before.cObject.20.altText = Click to close
+    ACTIFSUB.before.cObject.20.titleText = Click to close
+    ACTIFSUB.before.cObject.20.params = align="top"
+    ACTIFSUB.allWrap = <li>|<ul style="display:block;">
+    CURIFSUB < .ACTIFSUB
+    CURIFSUB = 1
+    CURIFSUB.ATagParams = class="act"
+    CURIFSUB.allWrap = <li><div class="cur">|</div><ul style="display:block;">
+  }
+  temp.level2 < temp.level1
+  temp.level2 {
+    NO.before.cObject {
+      1 = IMAGE
+      1.file.import = {$lib.treemenu.imgFolder}
+      1.file.import.data = register:level2tree
+      1.file.import.listNum = 0
+      1.params = align="top"
+    }
+    CUR.before.cObject.1 < .NO.before.cObject.1
+    IFSUB.before.cObject.1 < .NO.before.cObject.1
+    IFSUB.before.cObject.40.level2tree >
+    IFSUB.before.cObject.40.level3tree = {$lib.treemenu.vertlineImg} |*||*| {$lib.treemenu.spaceImg}
+    ACTIFSUB < .IFSUB
+    ACTIFSUB = 1
+    ACTIFSUB.before.cObject.10.file = {$lib.treemenu.imgFolder}{$lib.treemenu.expandImg} |*||*| {$lib.treemenu.imgFolder}{$lib.treemenu.expand_cornerImg}
+    ACTIFSUB.before.cObject.10.altText = +
+    ACTIFSUB.before.cObject.10.titleText = +
+    ACTIFSUB.before.cObject.10.params = align="top" |*||*| align="top" alt="+" title="+"
+    ACTIFSUB.before.cObject.20.file = {$lib.treemenu.imgFolder}{$lib.treemenu.folder_openImg}
+    ACTIFSUB.before.cObject.20.altText = Click to close
+    ACTIFSUB.before.cObject.20.titleText = Click to close
+    ACTIFSUB.before.cObject.20.params = align="top"
+    ACTIFSUB.allWrap = <li>|<ul style="display:block;">
+    CURIFSUB < .ACTIFSUB
+    CURIFSUB.ATagParams = class="act"
+    CURIFSUB.allWrap = <li><div class="cur">|</div><ul style="display:block;">
+  }
+  temp.level3 < temp.level2
+  temp.level3 {
+    NO.before.cObject {
+      2 = IMAGE
+      2.file.import = {$lib.treemenu.imgFolder}
+      2.file.import.data = register:level3tree
+      2.file.import.listNum = 0
+      2.params = align="top"
+    }
+    CUR.before.cObject.2 < .NO.before.cObject.2
+    IFSUB.before.cObject.2 < .NO.before.cObject.2
+    IFSUB.before.cObject.40.level3tree >
+    IFSUB.before.cObject.40.level4tree = {$lib.treemenu.vertlineImg} |*||*| {$lib.treemenu.spaceImg}
+    ACTIFSUB < .IFSUB
+    ACTIFSUB = 1
+    ACTIFSUB.before.cObject.10.file = {$lib.treemenu.imgFolder}{$lib.treemenu.expandImg} |*||*| {$lib.treemenu.imgFolder}{$lib.treemenu.expand_cornerImg}
+    ACTIFSUB.before.cObject.10.altText = +
+    ACTIFSUB.before.cObject.10.titleText = +
+    ACTIFSUB.before.cObject.10.params = align="top" |*||*| align="top" alt="+" title="+"
+    ACTIFSUB.before.cObject.20.file = {$lib.treemenu.imgFolder}{$lib.treemenu.folder_openImg}
+    ACTIFSUB.before.cObject.20.altText = Click to close
+    ACTIFSUB.before.cObject.20.titleText = Click to close
+    ACTIFSUB.before.cObject.20.params = align="top"
+    ACTIFSUB.allWrap = <li>|<ul style="display:block;">
+    CURIFSUB < .ACTIFSUB
+    CURIFSUB.ATagParams = class="act"
+    CURIFSUB.allWrap = <li><div class="cur">|</div><ul style="display:block;">
+  }
+  temp.level4 < temp.level3
+  temp.level4 {
+    NO.before.cObject {
+      3 = IMAGE
+      3.file.import = {$lib.treemenu.imgFolder}
+      3.file.import.data = register:level4tree
+      3.file.import.listNum = 0
+      3.params = align="top"
+    }
+    CUR.before.cObject.3 < .NO.before.cObject.3
+    IFSUB.before.cObject.3 < .NO.before.cObject.3
+    IFSUB.before.cObject.40.level4tree >
+    IFSUB.before.cObject.40.level5tree = {$lib.treemenu.vertlineImg} |*||*| {$lib.treemenu.spaceImg}
+    ACTIFSUB < .IFSUB
+    ACTIFSUB = 1
+    ACTIFSUB.before.cObject.10.file = {$lib.treemenu.imgFolder}{$lib.treemenu.expandImg} |*||*| {$lib.treemenu.imgFolder}{$lib.treemenu.expand_cornerImg}
+    ACTIFSUB.before.cObject.10.altText = +
+    ACTIFSUB.before.cObject.10.titleText = +
+    ACTIFSUB.before.cObject.10.params = align="top" |*||*| align="top" alt="+" title="+"
+    ACTIFSUB.before.cObject.20.file = {$lib.treemenu.imgFolder}{$lib.treemenu.folder_openImg}
+    ACTIFSUB.before.cObject.20.altText = Click to close
+    ACTIFSUB.before.cObject.20.titleText = Click to close
+    ACTIFSUB.before.cObject.20.params = align="top"
+    ACTIFSUB.allWrap = <li>|<ul style="display:block;">
+    CURIFSUB < .ACTIFSUB
+    CURIFSUB.ATagParams = class="act"
+    CURIFSUB.allWrap = <li><div class="cur">|</div><ul style="display:block;">
+  }
+  temp.level5 < temp.level4
+  temp.level5 {
+    NO.before.cObject {
+      4 = IMAGE
+      4.file.import = {$lib.treemenu.imgFolder}
+      4.file.import.data = register:level5tree
+      4.file.import.listNum = 0
+      4.params = align="top"
+    }
+    CUR.before.cObject.4 < .NO.before.cObject.4
+    IFSUB.before.cObject.4 < .NO.before.cObject.4
+    IFSUB.before.cObject.40.level5tree >
+    IFSUB.before.cObject.40.level6tree = {$lib.treemenu.vertlineImg} |*||*| {$lib.treemenu.spaceImg}
+    ACTIFSUB < .IFSUB
+    ACTIFSUB = 1
+    ACTIFSUB.before.cObject.10.file = {$lib.treemenu.imgFolder}{$lib.treemenu.expandImg} |*||*| {$lib.treemenu.imgFolder}{$lib.treemenu.expand_cornerImg}
+    ACTIFSUB.before.cObject.10.altText = +
+    ACTIFSUB.before.cObject.10.titleText = +
+    ACTIFSUB.before.cObject.10.params = align="top" |*||*| align="top" alt="+" title="+"
+    ACTIFSUB.before.cObject.20.file = {$lib.treemenu.imgFolder}{$lib.treemenu.folder_openImg}
+    ACTIFSUB.before.cObject.20.altText = Click to close
+    ACTIFSUB.before.cObject.20.titleText = Click to close
+    ACTIFSUB.before.cObject.20.params = align="top"
+    ACTIFSUB.allWrap = <li>|<ul style="display:block;">
+    CURIFSUB < .ACTIFSUB
+    CURIFSUB.ATagParams = class="act"
+    CURIFSUB.allWrap = <li><div class="cur">|</div><ul style="display:block;">
+  }
+
+  lib.cat2menu_tt_news.5 = COA
+  lib.cat2menu_tt_news.5 {
+  	wrap = <div class="treemenu"><ul><li>|</li>
+    10 = IMAGE
+	10.file = {$lib.treemenu.imgFolder}{$lib.treemenu.rootfolder_openImg}
+    10.params = align="top"
+	20 = TEXT
+	20.value = {$lib.treemenu.rootTitle}
+	20.wrap = <span class="treeheader">|</span>
+  }
+  lib.cat2menu_tt_news.10.wrap = |</ul></div>
+  
+  lib.cat2menu_tt_news.10.1 >
+  lib.cat2menu_tt_news.10.2 >
+  lib.cat2menu_tt_news.10.3 >
+  lib.cat2menu_tt_news.10.4 >
+  lib.cat2menu_tt_news.10.5 >
+  lib.cat2menu_tt_news.10.1 < temp.level1
+  lib.cat2menu_tt_news.10.2 < temp.level2
+  lib.cat2menu_tt_news.10.3 < temp.level3
+  lib.cat2menu_tt_news.10.4 < temp.level4 
+  lib.cat2menu_tt_news.10.5 < temp.level5 
+  lib.cat2menu_tt_news.10.special.expAll = 0
+
+// --- CSS Styles start ----------------------
+plugin.tx_pmkcat2menu_pi1._CSS_DEFAULT_STYLE (
+	.treemenu {text-align: left; width: 150px;font: normal normal normal 11px/16px Arial, Helvetica, sans-serif;overflow:auto;background: #f5f5f5;border:2px inset #000000;padding:6px;}
+	.treemenu ul, .treemenu li {list-style: none;margin: 0px;padding: 0px; white-space: nowrap;}
+	.treemenu li div.cur {background: #dddddd;}
+	.treemenu a { font: normal normal normal 11px/16px Arial, Helvetica, sans-serif;}
+	.treemenu a.no, .treemenu a.act {color: #000;text-decoration: none;}
+	.treemenu a.no:hover, .treemenu a.act:hover { text-decoration : underline;}
+	.treemenu a.act, .treemenu a.act:hover { font-weight : bold;}
+	.treemenu span.treeheader { font: normal normal bold 11px/16px Arial, Helvetica, sans-serif;padding:0;margin:0;color:#000; }
+)
+// --- CSS Styles end ------------------------
+
+// --- SETUP end -----------------------------
+
+page.5 >
+page.5 = COA
+page.5 {
+  10 = TEXT
+  10.value = Catmenu
+  10.wrap = <h3>|</h3>
+  20 < lib.cat2menu_tt_news
+}

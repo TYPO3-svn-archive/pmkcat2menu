@@ -1,0 +1,44 @@
+lib.cat2menu_tt_news {
+
+	# cat=pmkcat2menu/other/01; type=; label= Root category uid(s) to display (comma separated): If set to 0, all categories will be shown.
+	special.catList =
+
+	# cat=pmkcat2menu/other/02; type=int+; label= Id of page where category records are stored. (required)
+	special.pidList =
+
+	# cat=pmkcat2menu/other/03; type=int+; label= Id of page containing target extension.
+	special.targetId = 
+
+	# cat=pmkcat2menu/other/04; type=; label= Optional list of ids to exclude: This is a list of category uid's to exclude when the select statement is done. Comma-separated. 
+	special.excludeUidList = 
+	
+	# cat=pmkcat2menu/other/05; type=int+; label= Id of default category.
+	special.defaultCat =
+
+	# cat=pmkcat2menu/other/06; type=int+; label= Entrylevel of menu. Requires that defaultCat is set.
+	special.entryLevel = 0
+		
+	# cat=pmkcat2menu/other/07; type=string; label= Target extension key: Name of the extension key to trigger. (required)
+	special.extTrigger = tt_news
+	
+	# cat=pmkcat2menu/other/08; type=string; label= Name of the category field in the in target extension. (required)
+	special.varCat = cat
+
+	# cat=pmkcat2menu/other/09; type=string; label= Name of the category table. (required)
+	special.catTable = tt_news_cat
+
+	# cat=pmkcat2menu/other/10; type=string; label= Name of the parent category field in the category table. (required)
+	special.parentEntry = parent_category
+	
+	# cat=pmkcat2menu/other/11; type=string; label= Item states used in the menu: If not set, only NO state is available. If IFSUB is set, then IFSUB is also available for other states like ACT & CUR.
+	special.states = IFSUB,CUR,ACT
+	
+	# cat=pmkcat2menu/enable/12; type=boolean; label= Expand submenu: If this is true, the menu will always show the menu on the level underneath the menuitem.
+	special.expAll = 0
+
+	# cat=pmkcat2menu/enable/13; type=boolean; label= Use cookie to keep item state: If this is true, the item state will be stored in a session cookie, to prevent the menu from collapsing when not on the target page. (Menu MUST be enclosed in a COA_INT for this to work.)
+	special.useCookie = 1
+
+	# cat=pmkcat2menu/enable/14; type=boolean; label= Link category to first sub: If this is true, categories with subcategories will link to the firstt category in the rootline, without subcategories.
+	special.subShortcut = 1
+}

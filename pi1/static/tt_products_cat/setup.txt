@@ -1,0 +1,67 @@
+lib.cat2menu_tt_products = COA
+lib.cat2menu_tt_products {
+  10 = HMENU
+  10.special = userfunction
+  10.special.userFunc = tx_pmkcat2menu_pi1->main
+  10.special.catList = {$lib.cat2menu_tt_products.special.catList}
+  10.special.pidList = {$lib.cat2menu_tt_products.special.pidList}
+  10.special.excludeUidList = {$lib.cat2menu_tt_products.special.excludeUidList}
+  10.special.defaultCat = {$lib.cat2menu_tt_products.special.defaultCat}
+  10.special.entryLevel = {$lib.cat2menu_tt_products.special.entryLevel}
+  10.special.catTable = {$lib.cat2menu_tt_products.special.catTable}
+  10.special.parentEntry = {$lib.cat2menu_tt_products.special.parentEntry}
+  10.special.extTrigger = {$lib.cat2menu_tt_products.special.extTrigger}
+  10.special.varCat = {$lib.cat2menu_tt_products.special.varCat}
+  10.special.targetId = {$lib.cat2menu_tt_products.special.targetId}
+  10.special.states = {$lib.cat2menu_tt_products.special.states}
+  10.special.expAll = {$lib.cat2menu_tt_products.special.expAll}
+  10.special.useCookie = {$lib.cat2menu_tt_products.special.useCookie}
+  10.special.subShortcut = {$lib.cat2menu_tt_products.special.subShortcut}
+  10.1 = TMENU
+  10.1 {
+    noBlur = 1
+    wrap = <ul>|</ul>
+    NO {
+      stdWrap.htmlSpecialChars = 1
+      allWrap = <div class="cat-no">[N] | </div>
+      wrapItemAndSub = <li style="font-size:12px;">|</li>
+    }
+
+    IFSUB < .NO
+    IFSUB = 1
+    IFSUB.allWrap = <div class="cat-ifsub">[NI] | </div>
+ 
+    CUR < .NO
+    CUR = 1
+    CUR.allWrap = <div class="cat-act">[C] | </div>
+
+    CURIFSUB < .NO
+    CURIFSUB = 1
+    CURIFSUB.allWrap = <div class="cat-actifsub">[CI] | </div>
+
+    ACT < .NO
+    ACT = 1
+    ACT.allWrap = <div class="cat-act">[A] | </div>
+
+    ACTIFSUB < .NO
+    ACTIFSUB = 1
+    ACTIFSUB.allWrap = <div class="cat-actifsub">[AI] | </div>
+  }
+  10.2 = TMENU
+  10.2 < .10.1
+  10.3 = TMENU
+  10.3 < .10.1
+  10.4 = TMENU
+  10.4 < .10.1
+}
+[globalVar = LIT:1 = {$lib.cat2menu_tt_products.special.useCookie}]
+lib.cat2menu_tt_products = COA_INT
+[GLOBAL]
+
+page.5 = COA
+page.5 {
+  10 = TEXT
+  10.value = Catmenu
+  10.wrap = <h3>|</h3>
+  20 < lib.cat2menu_tt_products
+}
